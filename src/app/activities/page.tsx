@@ -146,14 +146,6 @@ const activities: Activity[] = [
     bio: "David Neita is a celebrated lawyer, with expertise in human rights and is widely regarded as one of the most engaging and informative social justice practitioners in London. He is also a published spoken word poet who has performed and led poetry workshops for a range of groups. He is dedicated to the mission of advancing empowerment through poetry, politics and public service. Called to the Bar of England & Wales in 2000, David was a member of the legal team, which brought the largest group action claim in the UK on behalf of thousands of South African asbestos miners.",
     images: ["/images/dave-neita.JPG"],
   },
-  {
-    icon: "🗣️",
-    id: "breakout-session-presentations",
-    title: "Breakout Session Presentations",
-    lead: "All participants · Daily 5:30–6:00 pm",
-    description:
-      "In order to activate co-creation, co-learning and integration we will blur the line between audience, performers and speakers. Each day people in the various breakout groups will gather after teach from 5:30 to 6:00 pm and will prepare an up to 8 min presentation that will take place after dinner. In this manner the performances of the evening will blend in with the integrated experiences of all of us. Moreover, as a group we can share in the activities and insights from sessions we were not a part of.",
-  },
 ];
 
 export default function ActivitiesPage() {
