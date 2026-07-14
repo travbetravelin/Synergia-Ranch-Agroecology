@@ -164,14 +164,6 @@ const activities: Activity[] = [
     images: ["/images/dave-neita.JPG"],
     note: "Friday · 7:45–8:45 pm",
   },
-  {
-    icon: "🗣️",
-    id: "breakout-session-presentations",
-    title: "Breakout Session Presentations",
-    lead: "All participants · Daily 5:30–6:00 pm",
-    description:
-      "In order to activate co-creation, co-learning and integration we will blur the line between audience, performers and speakers. Each day people in the various breakout groups will gather after teach from 5:30 to 6:00 pm and will prepare an up to 8 min presentation that will take place after dinner. In this manner the performances of the evening will blend in with the integrated experiences of all of us. Moreover, as a group we can share in the activities and insights from sessions we were not a part of.",
-  },
 ];
 
 export default function ActivitiesPage() {
