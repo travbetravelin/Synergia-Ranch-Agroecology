@@ -77,7 +77,7 @@ const schedule: Day[] = [
         type: "breakout",
         breakoutOptions: [
           "Nature Walk in the Arroyos",
-          "Painting in Nature",
+          "Checking in on Work Done in Practical Sessions",
         ],
       },
       { time: "10:00–11:00 am", title: "Bio Cosmology and the Use of Biochar", speaker: "James Skeet", speakerUrl: "/speakers#james-skeet", type: "keynote" },
@@ -114,7 +114,7 @@ const schedule: Day[] = [
         type: "breakout",
         breakoutOptions: [
           "Nature Walk in the Arroyos",
-          "Painting in Nature",
+          "Checking in on Work Done in Practical Sessions",
         ],
       },
       { time: "10:00–11:00 am", title: "Step by lucky Step", speaker: "Chili Hawes", speakerUrl: "/speakers#chili-hawes", type: "keynote" },
@@ -165,6 +165,13 @@ const typeLabels: Record<string, string> = {
   meal: "Meal",
 };
 
+const typeLocations: Record<string, string> = {
+  keynote: "Dance Studio",
+  breakout: "Dance Studio",
+  social: "Geo Dome",
+  meal: "Dining Hall",
+};
+
 const leaderLinks: Record<string, string> = {
   "Joyce Skeet": "/speakers#joyce-skeet",
   "Jan-Willem Jansens": "/speakers#jan-willem-jansens",
@@ -187,6 +194,7 @@ export default function SchedulePage() {
             style={{ backgroundColor: typeColors[key] }}
           >
             {label}
+            {typeLocations[key] && `, ${typeLocations[key]}`}
           </span>
         ))}
       </div>
@@ -227,6 +235,7 @@ export default function SchedulePage() {
                           style={{ backgroundColor: typeColors[s.type] }}
                         >
                           {typeLabels[s.type]}
+                          {typeLocations[s.type] && `, ${typeLocations[s.type]}`}
                         </span>
                       )}
                     </div>
