@@ -48,7 +48,7 @@ const speakers: Speaker[] = [
     talkAbstract: "Explore the realm of plants, their energy and medicine. Dive into some herbal formulas using local plants that benefit our well-being. Then take a journey several hundred years ago to immerse ourselves with the Landrace Churro Sheep, exploring the incredible traits they carry with them into the current century.",
     bio: "Joyce Skeet and her husband, James, co-founded Covenant Pathways and Spirit Farm, a 501(c)(3) nonprofit organization in Vanderwagen, New Mexico. Raised in Pennsylvania, Joyce learned agriculture, animal husbandry, and food preservation at an early age as part of a lifestyle centered on living off the land. In 2015, Covenant Pathways launched Spirit Farm, which uses all natural methods to restore the land and keep animals healthy. Joyce is passionate about healthy soil and meaningful connections with plants and animals. She focuses on growing practices that increase the nutritional value of food and on raising animals in ways that restore the land and produce healthy meat.",
     image: "/images/joyce-skeet.JPG",
-    note: "Keynote · Friday · 11:15 am–12:15 pm\nHerbal Preparations · Sunday · 3:00–5:00 pm",
+    note: "Keynote · Friday · 11:15 am–12:15 pm\nHerbal Preparations · Saturday · 3:00–5:00 pm",
   },
   {
     name: "Mike Halverson",
