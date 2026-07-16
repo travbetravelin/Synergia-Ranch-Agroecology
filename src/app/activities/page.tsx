@@ -102,7 +102,7 @@ const activities: Activity[] = [
         takes us on a two-hour practical session making Herbal Preparations with native herbs.
       </>
     ),
-    note: "Joyce Skeet, Spirit Farm · Sunday · 3:00–5:00 pm",
+    note: "Joyce Skeet, Spirit Farm · Saturday · 3:00–5:00 pm",
   },
   {
     icon: "💃",
