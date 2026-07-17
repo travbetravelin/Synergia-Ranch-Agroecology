@@ -100,6 +100,7 @@ const activities: Activity[] = [
           Joyce Skeet
         </Link>{" "}
         takes us on a two-hour practical session making Herbal Preparations with native herbs.
+        {" "}This hands-on workshop provides the experience to make herbal salves, transforming herbal infused oils into soothing, natural healing salves. This experience will also provide you with the understanding to make your own herbal tinctures. We will also provide a demonstration to make nutritional syrups using local growing plants.
       </>
     ),
     note: "Joyce Skeet, Spirit Farm · Saturday · 3:00–5:00 pm",
