@@ -120,8 +120,8 @@ const schedule: Day[] = [
       },
       { time: "10:00–11:00 am", title: "Step by lucky Step", speaker: "Chili Hawes", speakerUrl: "/speakers#chili-hawes", type: "keynote" },
       { time: "11:00 am–12:00 pm", title: "Restoring Eden: A Demonstration Project Challenging the \"Waste Water\" Paradigm and Celebrating Sustainable Cultures", speakers: [{ name: "Dr. Mark Nelson", url: "/speakers#mark-nelson" }, { name: "Meridel Rubenstein", url: "/speakers#meridel-rubenstein" }], type: "keynote" },
-      { time: "12:15–1:15 pm", title: "Lunch", type: "meal" },
-      { time: "1:30–2:15 pm", title: "Beyond the Liquid: Architectural Responses to the States and Crises of Water", speaker: "Nino Saggio", speakerUrl: "/speakers#nino-saggio", type: "keynote" },
+      { time: "12:00–1:00 pm", title: "Beyond the Liquid: Architectural Responses to the States and Crises of Water", speaker: "Nino Saggio", speakerUrl: "/speakers#nino-saggio", type: "keynote" },
+      { time: "1:00–2:00 pm", title: "Lunch", type: "meal" },
       { time: "2:15–3:00 pm", title: "Water is Life: Pushing Back Against the Commodification of Water in New Mexico and Building Community Capacity of Stewarding Water Resources in Increasingly Arid Environments", speaker: "Zack Withers, Polk's Folly", speakerUrl: "/speakers#zack-withers" },
       {
         time: "3:00–5:00 pm",
