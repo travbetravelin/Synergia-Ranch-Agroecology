@@ -15,6 +15,7 @@ type Session = {
   note?: string;
   italic?: boolean;
   type?: "keynote" | "breakout" | "social" | "ceremony" | "meal";
+  location?: string;
   breakoutOptions?: string[];
 };
 
@@ -30,8 +31,8 @@ const schedule: Day[] = [
     date: "July 16",
     sessions: [
       { time: "Afternoon", title: "Arrivals", note: "Check in and settle in at the ranch" },
-      { time: "4:30–5:15 pm", title: "Historical Tour of the Ranch", type: "social" },
-      { time: "5:30–6:00 pm", title: "Toasts & Welcome Speech", note: "Rounds of introductions", type: "social" },
+      { time: "4:30–5:15 pm", title: "Historical Tour of the Ranch", type: "social", location: "Dance Studio" },
+      { time: "5:30–6:00 pm", title: "Toasts & Welcome Speech", note: "Rounds of introductions", type: "social", location: "Dance Studio" },
       { time: "6:00–7:00 pm", title: "Dinner", type: "meal" },
     ],
   },
@@ -235,7 +236,7 @@ export default function SchedulePage() {
                           style={{ backgroundColor: typeColors[s.type] }}
                         >
                           {typeLabels[s.type]}
-                          {typeLocations[s.type] && `, ${typeLocations[s.type]}`}
+                          {(s.location ?? typeLocations[s.type]) && `, ${s.location ?? typeLocations[s.type]}`}
                         </span>
                       )}
                     </div>
