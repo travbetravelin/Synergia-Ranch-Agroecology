@@ -126,7 +126,7 @@ export default function SpeakerCard(props: SpeakerCardProps) {
           className="text-sm font-medium underline underline-offset-2 hover:opacity-70 mb-3 inline-block"
           onClick={(e) => e.stopPropagation()}
         >
-          View presentation →
+          Visit presentation →
         </a>
       )}
       {note && (
