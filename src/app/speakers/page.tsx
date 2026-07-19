@@ -12,6 +12,7 @@ type Speaker = {
   bio?: string;
   talkTitle?: string;
   talkAbstract?: string;
+  presentationUrl?: string;
   note?: string;
   image?: string;
   imagePosition?: string;
@@ -137,6 +138,7 @@ const speakers: Speaker[] = [
       "Beyond the Liquid: Architectural Responses to the States and Crises of Water",
     talkAbstract:
       "Water remains a fundamental pillar of the architectural imagination. This talk avoids a standard historical overview of water in design, opting instead to analyze what we define as the \"states of water\"—liquid, solid, and gaseous—and their specific inspirations for the built environment. The second part confronts the urgent paradigm shift caused by the global climate crisis, exploring how the architectural community has pioneered a holistic synergy between landscape and architecture where water is no longer a threat to be managed but a vital resource for reimagining urban projects.",
+    presentationUrl: "https://www.nitrosaggio.net/iquaderni/Conferenze/Biosphere/Water2026.html",
     note: "Keynote · Sunday · 1:30–2:15 pm",
   },
   {

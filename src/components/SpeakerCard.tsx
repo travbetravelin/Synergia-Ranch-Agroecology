@@ -18,6 +18,7 @@ type SpeakerCardProps = {
   bio?: string;
   talkTitle?: string;
   talkAbstract?: string;
+  presentationUrl?: string;
   note?: string;
   image?: string;
   imagePosition?: string;
@@ -40,7 +41,7 @@ function Initials({ name }: { name: string }) {
 }
 
 export default function SpeakerCard(props: SpeakerCardProps) {
-  const { id, name, role, bio, talkTitle, talkAbstract, note, image, imagePosition, coPresenter, images } = props;
+  const { id, name, role, bio, talkTitle, talkAbstract, presentationUrl, note, image, imagePosition, coPresenter, images } = props;
   const [open, setOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const hasBio = !!bio;
@@ -115,6 +116,18 @@ export default function SpeakerCard(props: SpeakerCardProps) {
       )}
       {talkAbstract && (
         <p className="text-sm opacity-70 leading-relaxed mb-3">{talkAbstract}</p>
+      )}
+      {presentationUrl && (
+        <a
+          href={presentationUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "var(--water)" }}
+          className="text-sm font-medium underline underline-offset-2 hover:opacity-70 mb-3 inline-block"
+          onClick={(e) => e.stopPropagation()}
+        >
+          View presentation →
+        </a>
       )}
       {note && (
         <div className="text-xs opacity-50 mt-1 font-mono space-y-0.5">
