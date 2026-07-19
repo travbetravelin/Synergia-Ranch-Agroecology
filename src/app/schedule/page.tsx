@@ -129,14 +129,11 @@ const schedule: Day[] = [
         breakoutOptions: [
           "Movement and Metaphor, Body as Earth — Kristin Swiat",
           "Building Erosion Control Structures — Jan-Willem Jansens",
-          "Composting Ceremony Preparation — Spirit Farm Team",
         ],
       },
       { time: "5:00–5:30 pm", title: "Tea & Personal Time" },
       { time: "5:30–6:00 pm", title: "Free time and Socializing" },
       { time: "6:00–7:00 pm", title: "Dinner — Dining Hall", type: "meal" },
-      { time: "7:30–8:00 pm", title: "Compost Ceremony", type: "ceremony" },
-      { time: "8:00–8:15 pm", title: "Closing Remarks", type: "ceremony" },
     ],
   },
   {
