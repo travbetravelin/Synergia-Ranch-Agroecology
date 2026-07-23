@@ -12,6 +12,7 @@ const links = [
   { href: "/workshops", label: "Workshops" },
   { href: "/volunteering", label: "Volunteering" },
   { href: "/blog", label: "Blog" },
+  { href: "/graph", label: "Graph" },
 ];
 
 export function OrgNav() {
