@@ -46,52 +46,34 @@ export default function Home() {
             Our Mission
           </h2>
           <p className="text-base leading-relaxed opacity-80">
-            [Mission statement copy to be added.]
+            Our mission at Synergia Ranch Agroecology is to produce high-quality, nutrient-rich food through regenerative farming practices that enhance soil health, strengthen biodiversity, support resilient water cycles, and maintain a thriving landscape for future generations.
           </p>
         </div>
       </section>
 
-      {/* What We Do */}
+      {/* Our Work */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 style={{ color: "var(--water-dark)" }} className="text-2xl font-bold mb-8 text-center">
-            What We Do
+            Our Work
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center text-sm">
             {[
-              { href: "/conferences", label: "Conferences", description: "Annual gatherings on regenerative land and water stewardship." },
-              { href: "/workshops", label: "Workshops", description: "Hands-on skill-building in agroecology and land restoration." },
-              { href: "/volunteering", label: "Volunteering", description: "Join us on the land at Synergia Ranch." },
-              { href: "/blog", label: "Blog", description: "Research, reflections, and field reports from the ranch." },
+              { icon: "🪨", label: "Erosion Control" },
+              { icon: "🔥", label: "Biochar" },
+              { icon: "🌸", label: "Herbal Preparations" },
+              { icon: "💃", label: "Movement & Embodiment" },
+              { icon: "🌾", label: "Arroyo & Orchard" },
+              { icon: "🌱", label: "Botanical Walks" },
+              { icon: "🎵", label: "Music & Arts" },
+              { icon: "🏛️", label: "Ranch History" },
             ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="bg-white rounded-xl p-6 shadow-sm border border-black/5 hover:shadow-md transition-shadow"
-              >
-                <p className="font-semibold mb-2" style={{ color: "var(--water-dark)" }}>{item.label}</p>
-                <p className="opacity-60 leading-relaxed">{item.description}</p>
-              </Link>
+              <div key={item.label} className="bg-white rounded-xl p-5 shadow-sm border border-black/5">
+                <p className="text-3xl mb-2">{item.icon}</p>
+                <p className="font-medium" style={{ color: "var(--water-dark)" }}>{item.label}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Featured Conference */}
-      <section style={{ backgroundColor: "var(--sand)" }} className="py-16 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <p className="text-sm uppercase tracking-widest opacity-50 mb-2">Upcoming Event</p>
-          <h2 style={{ color: "var(--water-dark)" }} className="text-2xl font-bold mb-2">
-            Water | Wind | Wisdom
-          </h2>
-          <p className="opacity-60 mb-6">July 17–19, 2026 · Synergia Ranch · Santa Fe, NM</p>
-          <Link
-            href="/conferences/2026-water"
-            style={{ backgroundColor: "var(--clay)" }}
-            className="inline-block px-8 py-3 rounded font-semibold text-white hover:opacity-90 transition-opacity"
-          >
-            Learn More
-          </Link>
         </div>
       </section>
 
