@@ -57,20 +57,38 @@ export default function Home() {
           <h2 style={{ color: "var(--water-dark)" }} className="text-2xl font-bold mb-8 text-center">
             Our Work
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 text-center text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
             {[
-              { icon: "🪨", label: "Erosion Control" },
-              { icon: "🔥", label: "Biochar" },
-              { icon: "🌸", label: "Herbal Preparations" },
-              { icon: "💃", label: "Movement & Embodiment" },
-              { icon: "🌾", label: "Arroyo & Orchard" },
-              { icon: "🌱", label: "Botanical Walks" },
-              { icon: "🎵", label: "Music & Arts" },
-              { icon: "🏛️", label: "Ranch History" },
+              {
+                icon: "🌿",
+                label: "Growing Food",
+                description: "Cultivating orchards and gardens with the aim to be in harmony with the life around us.",
+              },
+              {
+                icon: "🛠️",
+                label: "Workshops",
+                description: "Hosting field days to foster peer-to-peer learning and knowledge transfer in agroecology, regenerative farming, and soil biology.",
+              },
+              {
+                icon: "🪨",
+                label: "Ecological Restoration",
+                description: "Implementing grass hedges for wind erosion control, building erosion control structures, and establishing native pollinator hedgerows.",
+              },
+              {
+                icon: "🔥",
+                label: "Composting",
+                description: "Making small-scale worm composts, hot composts, Johnson-Su bioreactors, static hot composts, and biochar.",
+              },
+              {
+                icon: "🌱",
+                label: "Nursery",
+                description: "Building a new nursery to propagate native perennial flowers, trees, and shrubs.",
+              },
             ].map((item) => (
-              <div key={item.label} className="bg-white rounded-xl p-5 shadow-sm border border-black/5">
-                <p className="text-3xl mb-2">{item.icon}</p>
-                <p className="font-medium" style={{ color: "var(--water-dark)" }}>{item.label}</p>
+              <div key={item.label} className="bg-white rounded-xl p-6 shadow-sm border border-black/5">
+                <p className="text-3xl mb-3">{item.icon}</p>
+                <p className="font-semibold mb-1" style={{ color: "var(--water-dark)" }}>{item.label}</p>
+                <p className="opacity-60 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
