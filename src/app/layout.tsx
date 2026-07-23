@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { StagingBanner } from "@/components/StagingBanner";
-import { Nav } from "@/components/Nav";
+import { OrgNav } from "@/components/OrgNav";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "2026 Synergia Ranch Conference: Water | Wind | Wisdom",
+  title: "Synergia Ranch Agroecology",
   description:
-    "An international conference on regenerative solutions to desertification. July 17–19, 2026 at Synergia Ranch.",
+    "Regenerative land stewardship, ecological research, and community practice at Synergia Ranch, Santa Fe, NM.",
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <StagingBanner />
-        <Nav />
+        <OrgNav />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>
