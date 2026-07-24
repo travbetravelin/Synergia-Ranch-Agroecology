@@ -103,7 +103,8 @@ export default function GraphView({ data }: Props) {
       const root = createRoot(el);
       root.render(
         <ForceGraph2D
-          ref={(ref: FGRef) => { fgRef.current = ref; }}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={(ref: any) => { fgRef.current = ref; }}
           graphData={graphData}
           width={el.clientWidth}
           height={el.clientHeight}
