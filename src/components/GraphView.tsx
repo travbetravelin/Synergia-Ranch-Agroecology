@@ -19,9 +19,7 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 function nodeHref(node: GraphNode): string {
-  if (node.type === "people") return `/conferences/2026-water/speakers#${node.slug}`;
-  if (node.type === "event") return `/conferences/2026-water`;
-  return "#";
+  return `/graph/${node.slug}`;
 }
 
 
@@ -279,15 +277,13 @@ export default function GraphView({ data }: Props) {
                 )}
               </ul>
             )}
-            {nodeHref(selectedNode) !== "#" && (
-              <a
-                href={nodeHref(selectedNode)}
-                style={{ color: TYPE_COLORS[selectedNode.type] }}
-                className="text-xs font-medium underline underline-offset-2 hover:opacity-70"
-              >
-                Go to page →
-              </a>
-            )}
+            <a
+              href={nodeHref(selectedNode)}
+              style={{ color: TYPE_COLORS[selectedNode.type] }}
+              className="text-xs font-medium underline underline-offset-2 hover:opacity-70"
+            >
+              Go to page →
+            </a>
           </div>
         </div>
       )}

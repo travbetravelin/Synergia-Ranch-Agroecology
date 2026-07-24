@@ -19,9 +19,7 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 function nodeHref(node: GraphNode): string {
-  if (node.type === "people") return `/conferences/2026-water/speakers#${node.slug}`;
-  if (node.type === "event") return `/conferences/2026-water`;
-  return `/graph`;
+  return `/graph/${node.slug}`;
 }
 
 type Props = {
