@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback } from "react";
+import { createRoot } from "react-dom/client";
 import { useRouter } from "next/navigation";
 import type { GraphData, GraphNode } from "@/lib/graph";
 
@@ -47,7 +48,6 @@ export default function GraphView({ data }: Props) {
 
     import("react-force-graph-2d").then((mod) => {
       const ForceGraph2D = mod.default;
-      const { createRoot } = require("react-dom/client");
 
       const graphData = {
         nodes: data.nodes.map((n) => ({ ...n })),
@@ -55,7 +55,6 @@ export default function GraphView({ data }: Props) {
       };
 
       const root = createRoot(el);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       root.render(
         <ForceGraph2D
           graphData={graphData}
