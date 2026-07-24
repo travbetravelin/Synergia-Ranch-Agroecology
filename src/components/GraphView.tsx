@@ -98,9 +98,20 @@ export default function GraphView({ data }: Props) {
       const highlighted = highlightedIds();
 
       const root = createRoot(el);
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const handleRef = (instance: any) => {
+        fgRef.current = instance;
+        if (instance) {
+          instance.d3Force("charge")?.strength(-350).distanceMax(500);
+          instance.d3Force("link")?.distance(100);
+          instance.d3Force("collide", null);
+        }
+      };
+
       root.render(
         <ForceGraph2D
-          ref={fgRef}
+          ref={handleRef}
           graphData={graphData}
           width={el.clientWidth}
           height={el.clientHeight}
@@ -156,7 +167,10 @@ export default function GraphView({ data }: Props) {
             }
             ctx.globalAlpha = 1;
           }}
-          cooldownTicks={100}
+          cooldownTicks={150}
+          d3AlphaDecay={0.015}
+          d3VelocityDecay={0.3}
+          onEngineStop={() => fgRef.current?.zoomToFit(400, 60)}
         />
       );
 
