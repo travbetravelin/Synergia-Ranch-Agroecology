@@ -21,21 +21,6 @@ export default function Home() {
           <p className="text-lg md:text-xl font-light mb-10 drop-shadow opacity-80 max-w-2xl">
             Regenerative land stewardship, ecological research, and community practice at Synergia Ranch, Santa Fe, NM.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/about"
-              style={{ backgroundColor: "var(--clay)" }}
-              className="px-8 py-3 rounded font-semibold text-white hover:opacity-90 transition-opacity shadow-lg"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/conferences"
-              className="px-8 py-3 rounded font-semibold text-white border border-white/50 hover:bg-white/15 transition-colors"
-            >
-              Conferences
-            </Link>
-          </div>
         </div>
       </section>
 
