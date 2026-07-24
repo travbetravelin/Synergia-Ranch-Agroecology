@@ -24,10 +24,6 @@ function nodeHref(node: GraphNode): string {
   return "#";
 }
 
-type FGRef = {
-  zoom: (k: number, duration?: number) => void;
-  zoomToFit: (duration?: number, padding?: number) => void;
-};
 
 type Props = {
   data: GraphData;
@@ -35,7 +31,8 @@ type Props = {
 
 export default function GraphView({ data }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const fgRef = useRef<FGRef | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const fgRef = useRef<any>(null);
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [activeTypes, setActiveTypes] = useState<Set<string>>(
@@ -103,8 +100,7 @@ export default function GraphView({ data }: Props) {
       const root = createRoot(el);
       root.render(
         <ForceGraph2D
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ref={(ref: any) => { fgRef.current = ref; }}
+          ref={fgRef}
           graphData={graphData}
           width={el.clientWidth}
           height={el.clientHeight}
