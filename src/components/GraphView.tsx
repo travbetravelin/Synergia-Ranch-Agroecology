@@ -160,15 +160,14 @@ export default function GraphView({ data }: Props) {
           cooldownTicks={150}
           d3AlphaDecay={0.015}
           d3VelocityDecay={0.3}
-          onEngineStop={() => {
-            fgRef.current?.zoomToFit(400, 60);
-          }}
-          onEngineStart={() => {
-            fgRef.current?.d3Force("charge")?.strength(-350).distanceMax(500);
-            fgRef.current?.d3Force("link")?.distance(100);
-          }}
+          onEngineStop={() => fgRef.current?.zoomToFit(400, 60)}
         />
       );
+
+      setTimeout(() => {
+        fgRef.current?.d3Force("charge")?.strength(-350).distanceMax(500);
+        fgRef.current?.d3Force("link")?.distance(100);
+      }, 0);
 
       unmount = () => root.unmount();
     });
