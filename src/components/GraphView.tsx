@@ -165,8 +165,8 @@ export default function GraphView({ data }: Props) {
       );
 
       setTimeout(() => {
-        fgRef.current?.d3Force("charge")?.strength(-613).distanceMax(875);
-        fgRef.current?.d3Force("link")?.distance(175);
+        fgRef.current?.d3Force("charge")?.strength(-350).distanceMax(500);
+        fgRef.current?.d3Force("link")?.distance(100);
         fgRef.current?.d3ReheatSimulation();
       }, 100);
 
