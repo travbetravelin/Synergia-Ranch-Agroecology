@@ -31,14 +31,7 @@ const TYPE_DIRS: Record<NodeType, string> = {
   blog: "blog",
 };
 
-// Blog uses .md or .mdx; others use .mdx only
-const TYPE_EXTS: Record<NodeType, RegExp> = {
-  people: /\.mdx$/,
-  topic: /\.mdx$/,
-  place: /\.mdx$/,
-  event: /\.mdx$/,
-  blog: /\.mdx?$/,
-};
+const TYPE_EXT = /\.mdx?$/;
 
 function readNodes(): GraphNode[] {
   const nodes: GraphNode[] = [];
@@ -46,9 +39,8 @@ function readNodes(): GraphNode[] {
   for (const [type, dir] of Object.entries(TYPE_DIRS) as [NodeType, string][]) {
     const dirPath = path.join(CONTENT_DIR, dir);
     if (!fs.existsSync(dirPath)) continue;
-    const ext = TYPE_EXTS[type];
 
-    const files = fs.readdirSync(dirPath).filter((f) => ext.test(f));
+    const files = fs.readdirSync(dirPath).filter((f) => TYPE_EXT.test(f));
     for (const file of files) {
       const raw = fs.readFileSync(path.join(dirPath, file), "utf-8");
       const { data } = matter(raw);
@@ -73,17 +65,23 @@ function readEdges(nodes: GraphNode[]): GraphEdge[] {
   for (const [type, dir] of Object.entries(TYPE_DIRS) as [NodeType, string][]) {
     const dirPath = path.join(CONTENT_DIR, dir);
     if (!fs.existsSync(dirPath)) continue;
-    const ext = TYPE_EXTS[type];
 
-    const files = fs.readdirSync(dirPath).filter((f) => ext.test(f));
+    const files = fs.readdirSync(dirPath).filter((f) => TYPE_EXT.test(f));
     for (const file of files) {
       const raw = fs.readFileSync(path.join(dirPath, file), "utf-8");
-      const { data } = matter(raw);
+      const { data, content } = matter(raw);
       const source = (data.slug as string) ?? file.replace(/\.mdx?$/, "");
-      const links = (data.links as string[]) ?? [];
 
-      for (const target of links) {
-        if (!nodeIds.has(target)) continue;
+      // Collect targets from explicit links: frontmatter and [[wikilinks]] in body
+      const frontmatterLinks = (data.links as string[]) ?? [];
+      const wikilinkMatches = [...content.matchAll(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g)];
+      const wikilinkTargets = wikilinkMatches.map((m) =>
+        m[1].trim().toLowerCase().replace(/\s+/g, "-")
+      );
+      const targets = [...new Set([...frontmatterLinks, ...wikilinkTargets])];
+
+      for (const target of targets) {
+        if (!nodeIds.has(target) || target === source) continue;
         const key = [source, target].sort().join("--");
         if (edgeSet.has(key)) continue;
         edgeSet.add(key);
