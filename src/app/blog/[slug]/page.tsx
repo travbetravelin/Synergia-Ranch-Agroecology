@@ -75,9 +75,10 @@ export default async function BlogPostPage({ params }: Props) {
         />
       </div>
 
-      {graphConnections && graphConnections.connected.length > 0 && (
-        <GraphPanel connected={graphConnections.connected} currentTitle={post.title} />
-      )}
+      <GraphPanel
+        connected={graphConnections?.connected ?? []}
+        currentTitle={post.title}
+      />
     </div>
   );
 }

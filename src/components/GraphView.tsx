@@ -9,6 +9,7 @@ const TYPE_COLORS: Record<string, string> = {
   topic: "#6b8f71",
   place: "#9b7a5e",
   event: "#8b6bb1",
+  blog: "#b85c38",
 };
 
 const TYPE_LABELS: Record<string, string> = {
@@ -16,10 +17,11 @@ const TYPE_LABELS: Record<string, string> = {
   topic: "Topics",
   place: "Places",
   event: "Events",
+  blog: "Posts",
 };
 
 function nodeHref(node: GraphNode): string {
-  return `/graph/${node.slug}`;
+  return node.type === "blog" ? `/blog/${node.slug}` : `/graph/${node.slug}`;
 }
 
 

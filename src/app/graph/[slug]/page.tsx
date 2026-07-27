@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -12,6 +12,7 @@ const TYPE_COLORS: Record<string, string> = {
   topic: "#6b8f71",
   place: "#9b7a5e",
   event: "#8b6bb1",
+  blog: "#b85c38",
 };
 
 const TYPE_LABELS: Record<string, string> = {
@@ -19,6 +20,7 @@ const TYPE_LABELS: Record<string, string> = {
   topic: "Topic",
   place: "Place",
   event: "Event",
+  blog: "Post",
 };
 
 type Props = { params: Promise<{ slug: string }> };
@@ -41,6 +43,9 @@ export default async function GraphNodePage({ params }: Props) {
 
   const { node, connected } = connections;
 
+  // Blog posts live at /blog/[slug]
+  if (node.type === "blog") redirect(`/blog/${slug}`);
+
   // Try to find content file for this node
   const typeMap: Record<string, Parameters<typeof getContentItem>[0]> = {
     people: "people",
@@ -51,6 +56,9 @@ export default async function GraphNodePage({ params }: Props) {
   const contentType = typeMap[node.type];
   const content = contentType ? getContentItem(contentType, slug) : null;
   const resolvedBody = content ? resolveWikilinks(content.body) : null;
+
+  const graphNodes = connected.filter((n) => n.type !== "blog");
+  const relatedPosts = connected.filter((n) => n.type === "blog");
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-16">
@@ -89,14 +97,14 @@ export default async function GraphNodePage({ params }: Props) {
         <p className="opacity-40 italic text-sm mb-10">No detailed notes yet for this node.</p>
       )}
 
-      {/* Connections list */}
-      {connected.length > 0 && (
+      {/* Connected graph nodes */}
+      {graphNodes.length > 0 && (
         <div>
           <h2 style={{ color: "var(--water-dark)" }} className="text-lg font-semibold mb-4">
             Connected nodes
           </h2>
           <div className="flex flex-wrap gap-2">
-            {connected.map((n) => (
+            {graphNodes.map((n) => (
               <Link
                 key={n.slug}
                 href={`/graph/${n.slug}`}
@@ -106,6 +114,28 @@ export default async function GraphNodePage({ params }: Props) {
                   className="w-2 h-2 rounded-full"
                   style={{ backgroundColor: TYPE_COLORS[n.type] }}
                 />
+                {n.title}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Related blog posts */}
+      {relatedPosts.length > 0 && (
+        <div className="mt-8">
+          <h2 style={{ color: "var(--water-dark)" }} className="text-lg font-semibold mb-4">
+            Related posts
+          </h2>
+          <div className="space-y-2">
+            {relatedPosts.map((n) => (
+              <Link
+                key={n.slug}
+                href={`/blog/${n.slug}`}
+                className="flex items-center gap-2 text-sm py-1.5 hover:opacity-70 transition-opacity"
+                style={{ color: "#b85c38" }}
+              >
+                <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: "#b85c38" }} />
                 {n.title}
               </Link>
             ))}

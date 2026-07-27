@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-export type NodeType = "people" | "topic" | "place" | "event";
+export type NodeType = "people" | "topic" | "place" | "event" | "blog";
 
 export type GraphNode = {
   id: string;
@@ -28,6 +28,16 @@ const TYPE_DIRS: Record<NodeType, string> = {
   topic: "topics",
   place: "places",
   event: "events",
+  blog: "blog",
+};
+
+// Blog uses .md or .mdx; others use .mdx only
+const TYPE_EXTS: Record<NodeType, RegExp> = {
+  people: /\.mdx$/,
+  topic: /\.mdx$/,
+  place: /\.mdx$/,
+  event: /\.mdx$/,
+  blog: /\.mdx?$/,
 };
 
 function readNodes(): GraphNode[] {
@@ -36,16 +46,18 @@ function readNodes(): GraphNode[] {
   for (const [type, dir] of Object.entries(TYPE_DIRS) as [NodeType, string][]) {
     const dirPath = path.join(CONTENT_DIR, dir);
     if (!fs.existsSync(dirPath)) continue;
+    const ext = TYPE_EXTS[type];
 
-    const files = fs.readdirSync(dirPath).filter((f) => f.endsWith(".mdx"));
+    const files = fs.readdirSync(dirPath).filter((f) => ext.test(f));
     for (const file of files) {
       const raw = fs.readFileSync(path.join(dirPath, file), "utf-8");
       const { data } = matter(raw);
+      const slug = (data.slug as string) ?? file.replace(/\.mdx?$/, "");
       nodes.push({
-        id: data.slug as string,
-        title: data.title as string,
+        id: slug,
+        title: (data.title as string) ?? slug,
         type,
-        slug: data.slug as string,
+        slug,
       });
     }
   }
@@ -58,20 +70,20 @@ function readEdges(nodes: GraphNode[]): GraphEdge[] {
   const edgeSet = new Set<string>();
   const edges: GraphEdge[] = [];
 
-  for (const [, dir] of Object.entries(TYPE_DIRS)) {
+  for (const [type, dir] of Object.entries(TYPE_DIRS) as [NodeType, string][]) {
     const dirPath = path.join(CONTENT_DIR, dir);
     if (!fs.existsSync(dirPath)) continue;
+    const ext = TYPE_EXTS[type];
 
-    const files = fs.readdirSync(dirPath).filter((f) => f.endsWith(".mdx"));
+    const files = fs.readdirSync(dirPath).filter((f) => ext.test(f));
     for (const file of files) {
       const raw = fs.readFileSync(path.join(dirPath, file), "utf-8");
       const { data } = matter(raw);
-      const source = data.slug as string;
+      const source = (data.slug as string) ?? file.replace(/\.mdx?$/, "");
       const links = (data.links as string[]) ?? [];
 
       for (const target of links) {
         if (!nodeIds.has(target)) continue;
-        // Deduplicate bidirectional edges
         const key = [source, target].sort().join("--");
         if (edgeSet.has(key)) continue;
         edgeSet.add(key);
