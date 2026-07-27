@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/blog/Your Post Title.md",
+                "file": "content/blog/Your-Post-Title.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Your Post Title"
+              "title": "Your-Post-Title"
             }
           }
         ]
@@ -184,6 +184,6 @@
   "active": "8da6239add88ecce",
   "lastOpenFiles": [
     "content/blog/welcome.md",
-    "content/blog/Your Post Title.md"
+    "content/blog/Your-Post-Title.md"
   ]
 }
