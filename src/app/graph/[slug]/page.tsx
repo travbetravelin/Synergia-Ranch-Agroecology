@@ -143,7 +143,7 @@ export default async function GraphNodePage({ params }: Props) {
         </div>
       )}
 
-      <GraphPanel connected={connected} currentTitle={node.title} />
+      <GraphPanel connected={connected} currentNode={node} />
     </div>
   );
 }

@@ -174,7 +174,7 @@ export default function SpeakersPage() {
       {graphConnections && (
         <GraphPanel
           connected={graphConnections.connected}
-          currentTitle="2026 Conference"
+          currentNode={graphConnections.node}
         />
       )}
     </div>

@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <GraphPanel
         connected={graphConnections?.connected ?? []}
-        currentTitle={post.title}
+        currentNode={{ id: slug, slug, title: post.title, type: "blog" }}
       />
     </div>
   );
