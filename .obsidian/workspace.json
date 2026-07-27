@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/blog/welcome.md",
+                "file": "content/blog/contributing-content.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "welcome"
+              "title": "contributing-content"
             }
           }
         ]
@@ -181,8 +181,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "56c9b2ff75cbb1c8",
+  "active": "8da6239add88ecce",
   "lastOpenFiles": [
+    "Untitled.md",
+    "content/blog/contributing-content.md",
+    "content/blog/welcome.md",
+    "conflict-files-obsidian-git.md",
+    "content/blog/Your-Post-Title.md",
+    "_templates/Topic.md",
+    "_templates/Place.md",
+    "_templates/Person.md",
+    "_templates/Event.md",
+    "_templates/Blog Post.md",
+    "_templates",
     "content/topics/water-management.md",
     "content/topics/soil-health.md",
     "content/topics/river-revival.md",
@@ -198,16 +209,6 @@
     "content/places/synergia-ranch.md",
     "content/places/spirit-farm.md",
     "content/places/new-mexico.md",
-    "content/people/zack-withers.md",
-    "content/people/nino-saggio.md",
-    "content/people/mike-halverson.md",
-    "content/people/mark-nelson.md",
-    "content/people/kristin-swiat.md",
-    "content/people/joyce-skeet.md",
-    "content/people/jan-willem-jansens.md",
-    "content/people/james-skeet.md",
-    "content/people/indra-shekhar-singh.md",
-    "content/people/chili-hawes.md",
-    "content/people/austin-unruh.md"
+    "content/people/zack-withers.md"
   ]
 }
