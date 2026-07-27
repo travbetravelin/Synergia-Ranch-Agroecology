@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "content/blog/Your-Post-Title.md",
+                "file": "content/blog/welcome.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Your-Post-Title"
+              "title": "welcome"
             }
           }
         ]
@@ -181,9 +181,33 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8da6239add88ecce",
+  "active": "56c9b2ff75cbb1c8",
   "lastOpenFiles": [
-    "content/blog/welcome.md",
-    "content/blog/Your-Post-Title.md"
+    "content/topics/water-management.md",
+    "content/topics/soil-health.md",
+    "content/topics/river-revival.md",
+    "content/topics/regenerative-farming.md",
+    "content/topics/movement-embodiment.md",
+    "content/topics/indigenous-knowledge.md",
+    "content/topics/erosion-control.md",
+    "content/topics/desertification.md",
+    "content/topics/composting.md",
+    "content/topics/botanical-knowledge.md",
+    "content/topics/biochar.md",
+    "content/topics/agroforestry.md",
+    "content/places/synergia-ranch.md",
+    "content/places/spirit-farm.md",
+    "content/places/new-mexico.md",
+    "content/people/zack-withers.md",
+    "content/people/nino-saggio.md",
+    "content/people/mike-halverson.md",
+    "content/people/mark-nelson.md",
+    "content/people/kristin-swiat.md",
+    "content/people/joyce-skeet.md",
+    "content/people/jan-willem-jansens.md",
+    "content/people/james-skeet.md",
+    "content/people/indra-shekhar-singh.md",
+    "content/people/chili-hawes.md",
+    "content/people/austin-unruh.md"
   ]
 }
