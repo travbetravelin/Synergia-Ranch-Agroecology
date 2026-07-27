@@ -72,13 +72,11 @@ function readEdges(nodes: GraphNode[]): GraphEdge[] {
       const { data, content } = matter(raw);
       const source = (data.slug as string) ?? file.replace(/\.mdx?$/, "");
 
-      // Collect targets from explicit links: frontmatter and [[wikilinks]] in body
-      const frontmatterLinks = (data.links as string[]) ?? [];
+      // Derive edges from [[wikilinks]] in body
       const wikilinkMatches = [...content.matchAll(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g)];
-      const wikilinkTargets = wikilinkMatches.map((m) =>
-        m[1].trim().toLowerCase().replace(/\s+/g, "-")
-      );
-      const targets = [...new Set([...frontmatterLinks, ...wikilinkTargets])];
+      const targets = [...new Set(
+        wikilinkMatches.map((m) => m[1].trim().toLowerCase().replace(/\s+/g, "-"))
+      )];
 
       for (const target of targets) {
         if (!nodeIds.has(target) || target === source) continue;

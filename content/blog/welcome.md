@@ -5,10 +5,6 @@ date: 2026-07-24
 author: Synergia Ranch
 tags: [agroecology, regenerative-farming, synergia-ranch]
 excerpt: An introduction to what we are building at Synergia Ranch and why it matters.
-links:
-  - synergia-ranch
-  - regenerative-farming
-  - composting
 ---
 
 # Welcome to Synergia Ranch Agroecology

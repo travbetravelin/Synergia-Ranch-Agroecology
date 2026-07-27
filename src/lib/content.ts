@@ -12,7 +12,6 @@ export type ContentMeta = {
   author?: string;
   tags?: string[];
   excerpt?: string;
-  links?: string[];
   role?: string;
 };
 
@@ -52,7 +51,6 @@ export function getContentItems(type: ContentType): ContentItem[] {
         author: data.author,
         tags: data.tags,
         excerpt: data.excerpt,
-        links: data.links,
         role: data.role,
         body: content,
       };
@@ -80,7 +78,6 @@ export function getContentItem(type: ContentType, slug: string): ContentItem | n
     author: data.author,
     tags: data.tags,
     excerpt: data.excerpt,
-    links: data.links,
     role: data.role,
     body: content,
   };

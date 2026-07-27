@@ -43,19 +43,25 @@ Go to **Settings** → **Obsidian Git** and set:
 
 - **Auto pull interval**: `10` (minutes) — keeps your local copy up to date
 - **Auto push interval**: `0` — push manually so you control when changes go live
-- **Commit message**: `vault backup: {{date}}` (or leave as default)
 
-### 5. Publishing your changes
+### 5. Configure the Templates plugin
 
-When you are ready to publish:
+1. Go to **Settings** → **Core plugins** and enable **Templates**
+2. Go to **Settings** → **Templates** and set **Template folder location** to `_templates`
+
+Now when you create a new file, run **Templates: Insert template** from the command palette to pre-fill the correct frontmatter.
+
+### 6. Publishing your changes
+
+When ready to publish:
 
 1. Open the **Command palette** (Cmd+P on Mac, Ctrl+P on Windows)
-2. Search for **Obsidian Git: Commit all changes**
-3. Then search for **Obsidian Git: Push**
+2. Run **Obsidian Git: Commit all changes**
+3. Run **Obsidian Git: Push**
 
 Changes go live on the site within a few minutes after pushing.
 
-> **Note:** Always pull before you start writing to avoid conflicts. Use **Obsidian Git: Pull** from the command palette.
+> **Always pull before you start writing.** Run **Obsidian Git: Pull** from the command palette to avoid conflicts with other contributors.
 
 ---
 
@@ -72,17 +78,18 @@ content/
   events/      ← conferences and gatherings
 ```
 
+Templates for each content type live in `_templates/` — use them when creating new files.
+
 ---
 
 ## Writing a Blog Post
 
-Create a new `.md` file inside `content/blog/`. The filename becomes the URL slug — use lowercase letters and hyphens, no spaces.
-
-**Example:** `content/blog/water-and-soil.md` → `/blog/water-and-soil`
+1. Create a new file inside `content/blog/`
+2. Name it with lowercase letters and hyphens — this becomes the URL: `water-and-soil.md` → `/blog/water-and-soil`
+3. Insert the **Blog Post** template from the command palette
+4. Fill in the frontmatter and write your content below
 
 ### Frontmatter
-
-Every blog post needs a frontmatter block at the top:
 
 ```yaml
 ---
@@ -91,10 +98,7 @@ date: 2026-07-15
 author: Your Name
 excerpt: A short summary shown on the blog index page.
 tags: [water, soil, agroecology]
-links: [biochar, mark-nelson, synergia-ranch]
 ---
-
-Your post content goes here...
 ```
 
 | Field | Required | Description |
@@ -104,87 +108,75 @@ Your post content goes here...
 | `author` | Optional | Shown below the title |
 | `excerpt` | Recommended | Preview text on the blog index |
 | `tags` | Optional | Displayed as colored chips |
-| `links` | Optional | Connects this post to knowledge nodes (see below) |
-
-### Body
-
-Write standard markdown below the frontmatter. You can use:
-
-- `**bold**`, `*italic*`
-- `## Headings`
-- `- Bullet lists`
-- `[link text](https://example.com)`
-- `[[node-slug]]` — links to a knowledge node (see below)
-- `[[node-slug|custom label]]` — same link with custom display text
-
----
-
-## Linking to Knowledge Nodes (Wikilinks)
-
-The site has a **knowledge graph** — a network of people, topics, places, and events. You can link to any node from a blog post using double-bracket syntax:
-
-```
-[[biochar]]
-[[mark-nelson]]
-[[synergia-ranch|the ranch]]
-```
-
-These render as clickable links that navigate to the node's detail page, which shows that node's notes and all its connections.
-
-To connect a post to the graph (so it appears in the side panel and on node pages), add the node slugs to the `links:` frontmatter field:
-
-```yaml
-links: [biochar, water-policy, mark-nelson]
-```
-
-The slug is just the filename of the node without the `.mdx` extension. For example, `content/topics/biochar.mdx` has the slug `biochar`.
 
 ---
 
 ## Creating a Knowledge Node
 
-Knowledge nodes are the entries in the graph. They are MDX files (markdown with optional components) stored in one of four folders based on type.
+Knowledge nodes are the entries in the graph — people, topics, places, and events.
 
-### Node types
-
-| Type | Folder | Example |
+| Type | Folder | Template to use |
 |---|---|---|
-| People | `content/people/` | Speakers, contributors |
-| Topics | `content/topics/` | Biochar, water policy, permaculture |
-| Places | `content/places/` | Synergia Ranch, Spirit Farm |
-| Events | `content/events/` | 2026 Water Conference |
+| People | `content/people/` | Person |
+| Topics | `content/topics/` | Topic |
+| Places | `content/places/` | Place |
+| Events | `content/events/` | Event |
 
-### Frontmatter for a knowledge node
+Name the file using the node's slug: `mark-nelson.md`, `biochar.md`, etc.
 
+### Frontmatter
+
+**Person:**
 ```yaml
 ---
 slug: mark-nelson
 title: Mark Nelson
 type: people
 role: Ecologist and co-founder of Biosphere 2
-links: [biosphere-2, water-policy, synergia-ranch]
 ---
+```
 
-Mark Nelson is an ecologist, writer, and pioneer of closed ecological systems...
+**Topic, Place, or Event:**
+```yaml
+---
+slug: biochar
+title: Biochar
+type: topic
+---
 ```
 
 | Field | Required | Description |
 |---|---|---|
-| `slug` | Yes | Unique identifier used in URLs and links |
-| `title` | Yes | Display name |
+| `slug` | Yes | Must match the filename exactly (without `.md`) |
+| `title` | Yes | Display name shown on the page and in the graph |
 | `type` | Yes | `people`, `topic`, `place`, or `event` |
-| `role` | Optional | Short descriptor shown below the title |
-| `links` | Optional | Slugs of connected nodes — this creates graph edges |
+| `role` | People only | Short descriptor shown below the name |
 
-### Viewing the graph
+---
 
-After publishing, the full graph is at `/graph`. Clicking any node opens its detail page showing its notes and connections. Blog posts that link to a node appear in a **Related posts** section at the bottom of that node's page.
+## Connecting Nodes with Wikilinks
+
+The site builds its knowledge graph automatically from `[[wikilinks]]` in the body of any file. No separate configuration needed.
+
+To link to a knowledge node, wrap its slug in double brackets anywhere in the body:
+
+```
+[[biochar]]
+[[mark-nelson]]
+[[synergia-ranch|the ranch]]   ← custom display label after the pipe
+```
+
+These render as clickable links on the page and automatically create edges in the graph. If a blog post mentions `[[biochar]]`, that post will appear under "Related posts" on the Biochar node page, and the Biochar node will appear in the "Connections" panel when reading the post.
+
+**The slug is just the filename without `.md`.** For example, `content/topics/biochar.md` has the slug `biochar`.
+
+Connections are bidirectional — add the wikilink in one file and both nodes show the relationship.
 
 ---
 
 ## Tips
 
-- **Filename = slug**: keep filenames lowercase with hyphens. `My File.md` becomes `/blog/My-File` which looks odd in URLs.
-- **Pull before you write**: run **Obsidian Git: Pull** before starting to avoid merge conflicts.
-- **Links are bidirectional**: if post A links to node B, node B's page will show post A under Related Posts — you only need to add the link in one direction.
+- **Filename = slug**: keep filenames lowercase with hyphens. `My File.md` becomes `/blog/My-File`, which looks odd in URLs.
+- **Pull before you write**: run **Obsidian Git: Pull** before starting to avoid conflicts with other contributors.
+- **Wikilink autocomplete**: Obsidian will suggest existing filenames as you type `[[` — use this to avoid slug typos.
 - **The graph updates on every deploy**: new nodes and edges appear automatically after you push.
