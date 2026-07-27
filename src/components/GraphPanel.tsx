@@ -33,6 +33,8 @@ type Props = {
 
 function MiniGraph({ currentNode, connected }: { currentNode: GraphNode; connected: GraphNode[] }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const fgRef = useRef<any>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -52,11 +54,12 @@ function MiniGraph({ currentNode, connected }: { currentNode: GraphNode; connect
 
       root.render(
         <ForceGraph2D
+          ref={fgRef}
           graphData={graphData}
           width={el.clientWidth}
           height={el.clientHeight}
           nodeLabel="title"
-          nodeVal={(node: GraphNode) => node.id === currentNode.id ? 12 : 7}
+          nodeVal={8}
           nodeCanvasObject={(node: GraphNode & { x?: number; y?: number }, ctx: CanvasRenderingContext2D, globalScale: number) => {
             const isCurrent = node.id === currentNode.id;
             const r = isCurrent ? 9 : 6;
@@ -81,18 +84,24 @@ function MiniGraph({ currentNode, connected }: { currentNode: GraphNode; connect
             }
           }}
           linkColor={() => "rgba(0,0,0,0.15)"}
-          linkWidth={1}
+          linkWidth={1.5}
           onNodeClick={(node: GraphNode) => {
             if (node.id !== currentNode.id) router.push(nodeHref(node));
           }}
-          cooldownTicks={80}
-          d3AlphaDecay={0.03}
-          d3VelocityDecay={0.4}
-          onEngineStop={() => {}}
+          cooldownTicks={150}
+          d3AlphaDecay={0.015}
+          d3VelocityDecay={0.3}
+          onEngineStop={() => fgRef.current?.zoomToFit(400, 40)}
           enableZoomInteraction={false}
           enablePanInteraction={false}
         />
       );
+
+      setTimeout(() => {
+        fgRef.current?.d3Force("charge")?.strength(-350).distanceMax(500);
+        fgRef.current?.d3Force("link")?.distance(100);
+        fgRef.current?.d3ReheatSimulation();
+      }, 100);
 
       unmount = () => root.unmount();
     });
