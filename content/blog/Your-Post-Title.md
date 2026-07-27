@@ -20,4 +20,4 @@ links:
 
 ---
 
-Your content here. Use [[wikilinks]] to link to other nodes
+- [ ] Your content here. Use [[wikilinks]] to link to other nodes. [Amanda Bramble](amanda-bramble)
