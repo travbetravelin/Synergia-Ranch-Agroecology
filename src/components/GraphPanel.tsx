@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { createRoot } from "react-dom/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type { GraphNode } from "@/lib/graph";
@@ -47,7 +48,6 @@ function MiniGraph({ currentNode, connected }: { currentNode: GraphNode; connect
 
     import("react-force-graph-2d").then((mod) => {
       const ForceGraph2D = mod.default;
-      const { createRoot } = require("react-dom/client");
       const root = createRoot(el);
 
       root.render(

@@ -62,7 +62,7 @@ function readEdges(nodes: GraphNode[]): GraphEdge[] {
   const edgeSet = new Set<string>();
   const edges: GraphEdge[] = [];
 
-  for (const [type, dir] of Object.entries(TYPE_DIRS) as [NodeType, string][]) {
+  for (const [, dir] of Object.entries(TYPE_DIRS) as [NodeType, string][]) {
     const dirPath = path.join(CONTENT_DIR, dir);
     if (!fs.existsSync(dirPath)) continue;
 
