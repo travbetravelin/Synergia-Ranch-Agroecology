@@ -130,23 +130,35 @@ export default function GraphPanel({ connected, currentNode }: Props) {
       {/* Toggle button — fixed to right edge */}
       <button
         onClick={() => setOpen((o) => !o)}
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 shadow-lg hover:opacity-90 transition-opacity p-0 border-0 bg-transparent"
         aria-label="Toggle connections panel"
         title="Related nodes"
+        style={{
+          position: "fixed",
+          right: 0,
+          top: "50%",
+          transform: "translateY(-50%)",
+          zIndex: 40,
+          backgroundColor: "var(--water-dark)",
+          color: "white",
+          border: "none",
+          borderRadius: "8px 0 0 8px",
+          padding: "16px 10px",
+          cursor: "pointer",
+          boxShadow: "-2px 0 8px rgba(0,0,0,0.15)",
+          opacity: 1,
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
       >
         <span
           style={{
             writingMode: "vertical-rl",
             transform: "rotate(180deg)",
-            display: "flex",
-            alignItems: "center",
-            padding: "16px 8px",
+            display: "block",
             fontSize: "12px",
             fontWeight: 500,
             whiteSpace: "nowrap",
-            backgroundColor: "var(--water-dark)",
-            color: "white",
-            borderRadius: "8px 0 0 8px",
+            lineHeight: 1,
           }}
         >
           Connections {connected.length > 0 && `(${connected.length})`}
