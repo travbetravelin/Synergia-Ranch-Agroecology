@@ -20,6 +20,14 @@ const TYPE_LABELS: Record<string, string> = {
   blog: "Posts",
 };
 
+const TYPE_LABELS_SINGULAR: Record<string, string> = {
+  people: "Person",
+  topic: "Topic",
+  place: "Place",
+  event: "Event",
+  blog: "Post",
+};
+
 function nodeHref(node: GraphNode): string {
   return node.type === "blog" ? `/blog/${node.slug}` : `/graph/${node.slug}`;
 }
@@ -250,7 +258,7 @@ export default function GraphView({ data }: Props) {
             style={{ backgroundColor: TYPE_COLORS[selectedNode.type], color: "white" }}
           >
             <p className="text-xs opacity-70 uppercase tracking-wide mb-0.5">
-              {TYPE_LABELS[selectedNode.type]?.slice(0, -1)}
+              {TYPE_LABELS_SINGULAR[selectedNode.type]}
             </p>
             <p className="font-semibold text-sm">{selectedNode.title}</p>
           </div>
