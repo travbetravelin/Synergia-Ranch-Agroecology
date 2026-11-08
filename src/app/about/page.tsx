@@ -10,7 +10,7 @@ export default function AboutPage() {
       <h1 style={{ color: "var(--water-dark)" }} className="text-4xl font-bold mb-6">About</h1>
       <div className="space-y-6 opacity-80 leading-relaxed">
         <h2 style={{ color: "var(--water-dark)" }} className="text-xl font-semibold">Synergia Ranch</h2>
-        <p>[About the ranch — copy to be added.]</p>
+        <p>Synergia Ranch is a 111 acre property.</p>
         <h2 style={{ color: "var(--water-dark)" }} className="text-xl font-semibold">Agroecology Program</h2>
         <p>[About the agroecology program — copy to be added.]</p>
         <h2 style={{ color: "var(--water-dark)" }} className="text-xl font-semibold">Institute of Ecotechnics</h2>
